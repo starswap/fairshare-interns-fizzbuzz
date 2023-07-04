@@ -48,7 +48,6 @@ function translate_number(number) {
         }
     }
    
-
     return (strings.length == 0 ? number.toString() : strings.join(""));
 }
 
