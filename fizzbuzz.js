@@ -1,18 +1,24 @@
 function translate_number(number) {
-    if (number % 15 == 0) {
-        return "FizzBuzz";
-    } else if (number % 3 == 0) {
-        return "Fizz";
-    } else if (number % 5 == 0) {
-        return "Buzz";
-    } else {
-        return number.toString();
+    let result = "";
+    
+    if (number % 3 == 0) {
+        result += "Fizz";
     }
+
+    if (number % 5 == 0) {
+        result += "Buzz";
+    }
+
+    if (number % 7 == 0) {
+        result += "Bang";
+    }
+    
+    return (result == "" ? number.toString() : result);
 }
 
 // This is our main function
 function fizzbuzz() {
-    for (let i = 1; i <= 100; ++i) {
+    for (let i = 1; i <= 200; ++i) {
         console.log(translate_number(i));
     }
 }
