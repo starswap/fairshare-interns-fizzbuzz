@@ -1,3 +1,5 @@
+var readline = require('readline');
+
 function process_3(strings) {
     return strings.concat("Fizz");
 }
@@ -51,13 +53,22 @@ function translate_number(number) {
     return (strings.length == 0 ? number.toString() : strings.join(""));
 }
 
-// This is our main function
-function fizzbuzz() {
-    for (let i = 1; i <= 300; ++i) {
+function fizzbuzz(end_number) {
+    console.log(`Fizzbuzzing up to ${end_number}`);
+
+    for (let i = 1; i <= end_number; ++i) {
         console.log(translate_number(i));
     }
 }
 
-// Now, we run the main function:
-fizzbuzz();
 
+// Main program code
+var r_stdin = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+r_stdin.on("line", function (cmd) {
+    fizzbuzz(cmd.toString());
+    r_stdin.close();
+});
