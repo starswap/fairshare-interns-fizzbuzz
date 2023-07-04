@@ -12,6 +12,10 @@ function translate_number(number) {
     if (number % 7 == 0) {
         result += "Bang";
     }
+
+    if (number % 11 == 0) {
+        result = "Bong";
+    }
     
     return (result == "" ? number.toString() : result);
 }
