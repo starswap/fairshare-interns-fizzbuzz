@@ -26,13 +26,18 @@ function process_13(strings) {
     return strings;
 }
 
+function process_17(strings) {
+    return strings.reverse();
+}
+
 function translate_number(number) {
     let mappings = [
         [ 3,  process_3 ],
         [ 5,  process_5 ],
         [ 7,  process_7 ],
         [ 11, process_11 ],
-        [ 13, process_13 ]
+        [ 13, process_13 ],
+        [ 17, process_17 ]
     ]
     
     let strings = [];
