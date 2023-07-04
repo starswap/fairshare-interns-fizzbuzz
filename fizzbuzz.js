@@ -32,7 +32,7 @@ function process_17(strings) {
     return strings.reverse();
 }
 
-function translate_number(number) {
+function translate_number(number, rules_on) {
     let mappings = [
         [ 3,  process_3 ],
         [ 5,  process_5 ],
@@ -40,7 +40,7 @@ function translate_number(number) {
         [ 11, process_11 ],
         [ 13, process_13 ],
         [ 17, process_17 ]
-    ]
+    ].filter(([mod, handler]) => rules_on.includes(mod));
     
     let strings = [];
 
@@ -53,14 +53,15 @@ function translate_number(number) {
     return (strings.length == 0 ? number.toString() : strings.join(""));
 }
 
-function fizzbuzz(end_number) {
+function fizzbuzz(end_number, rules_on) {
     console.log(`Fizzbuzzing up to ${end_number}`);
 
     for (let i = 1; i <= end_number; ++i) {
-        console.log(translate_number(i));
+        console.log(translate_number(i, rules_on));
     }
 }
 
+rules_on = process.argv.slice(2).map((x) => parseInt(x));
 
 // Main program code
 var r_stdin = readline.createInterface({
@@ -69,6 +70,6 @@ var r_stdin = readline.createInterface({
 });
 
 r_stdin.on("line", function (cmd) {
-    fizzbuzz(cmd.toString());
+    fizzbuzz(cmd.toString(), rules_on);
     r_stdin.close();
 });
